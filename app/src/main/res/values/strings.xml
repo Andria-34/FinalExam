@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">My Application 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="item_categories">
+        <item>Electronics</item>
+        <item>Books &amp; Notes</item>
+        <item>Clothing &amp; Accessories</item>
+        <item>Water Bottles &amp; Mugs</item>
+        <item>Keys &amp; ID Cards</item>
+        <item>Other</item>
+    </string-array>
+</resources>

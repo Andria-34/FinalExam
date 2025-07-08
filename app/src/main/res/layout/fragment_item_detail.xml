@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ItemDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:paddingTop="100dp">
+
+        <!-- This is the large image at the top of the screen -->
+        <ImageView
+            android:id="@+id/ivDetailImage"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/backgrounds/scenic"
+            android:contentDescription="Image of the reported item"/>
+
+        <!-- This progress bar is shown while the item's details are being loaded -->
+        <ProgressBar
+            android:id="@+id/detailProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!--
+            This 'Group' is a helper to control the visibility of all content at once.
+            It's hidden by default and becomes visible after the data is loaded.
+        -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/contentGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="tvDetailTitle, tvDetailStatus, tvDetailDescription, btnClaimItem, descLabel, locLabel, tvDetailLocation, dateLabel, tvDetailDate"
+            tools:visibility="visible"/>
+
+        <!-- Item Title -->
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            app:layout_constraintEnd_toStartOf="@+id/tvDetailStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetailImage"
+            tools:text="Black Hydro Flask" />
+
+        <!-- Status Tag (LOST or FOUND) -->
+        <TextView
+            android:id="@+id/tvDetailStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/status_tag_background"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetailImage"
+            tools:backgroundTint="#D32F2F"
+            tools:text="LOST" />
+
+        <!-- Date Label -->
+        <TextView
+            android:id="@+id/dateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Date Posted"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintStart_toStartOf="@+id/tvDetailTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailTitle" />
+
+        <!-- Actual Date -->
+        <TextView
+            android:id="@+id/tvDetailDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintStart_toStartOf="@+id/dateLabel"
+            app:layout_constraintTop_toBottomOf="@+id/dateLabel"
+            tools:text="June 26, 2025" />
+
+        <!-- Location Label -->
+        <TextView
+            android:id="@+id/locLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Location"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintStart_toStartOf="@+id/tvDetailDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailDate" />
+
+        <!-- Actual Location -->
+        <TextView
+            android:id="@+id/tvDetailLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintStart_toStartOf="@+id/locLabel"
+            app:layout_constraintTop_toBottomOf="@+id/locLabel"
+            tools:text="Library, 2nd Floor" />
+
+        <!-- Description Label -->
+        <TextView
+            android:id="@+id/descLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintStart_toStartOf="@+id/tvDetailLocation"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailLocation" />
+
+        <!-- Actual Description -->
+        <TextView
+            android:id="@+id/tvDetailDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/descLabel"
+            app:layout_constraintTop_toBottomOf="@+id/descLabel"
+            tools:text="A very long and detailed description of the item goes here to show how the text wraps and fills the space. It has a small black sticker on the bottom." />
+
+        <!-- Claim Button -->
+        <Button
+            android:id="@+id/btnClaimItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:padding="12dp"
+            android:text="Claim This Item"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailDescription"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

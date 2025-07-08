@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!--
+        Destination 1: LoginFragment
+        This is the starting point of the application.
+    -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication2.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <!-- Action to navigate from Login to Register -->
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <!-- Action to navigate from Login to Home (on successful login) -->
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!--
+        Destination 2: RegisterFragment
+    -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.myapplication2.RegisterFragment"
+        android:label="Register"
+        tools:layout="@layout/fragment_register">
+        <!-- Action to navigate from Register to Home (on successful registration) -->
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!--
+        Destination 3: HomeFragment
+        This is the main screen after a user logs in.
+    -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.myapplication2.HomeFragment"
+        android:label="Campus Lost &amp; Found"
+        tools:layout="@layout/fragment_home">
+        <!-- Action to navigate from Home to Login (on logout) -->
+        <action
+            android:id="@+id/action_homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+        <!-- Action to navigate from Home to the Add Item screen -->
+        <action
+            android:id="@+id/action_homeFragment_to_addItemFragment"
+            app:destination="@id/addItemFragment" />
+        <!-- Action to navigate from Home to the Item Detail screen -->
+        <action
+            android:id="@+id/action_homeFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
+
+    <!--
+        Destination 4: AddItemFragment
+        The form for reporting a new item.
+    -->
+    <fragment
+        android:id="@+id/addItemFragment"
+        android:name="com.example.myapplication2.AddItemFragment"
+        android:label="Report an Item"
+        tools:layout="@layout/fragment_add_item" />
+
+    <!--
+        Destination 5: ItemDetailFragment
+        Shows the details of a single selected item.
+    -->
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.example.myapplication2.ItemDetailFragment"
+        android:label="Item Details"
+        tools:layout="@layout/fragment_item_detail">
+
+        <!--
+            This argument is required to open this screen. It tells the
+            Safe Args plugin to expect a String value named "itemId".
+        -->
+        <argument
+            android:name="itemId"
+            app:argType="string" />
+    </fragment>
+
+</navigation>
