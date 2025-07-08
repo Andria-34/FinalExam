@@ -1,15 +1,49 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+### Android ###
+
+# Built application files
+*.apk
+*.aab
+*.ap_
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Built intermediate files
+/build/
+/app/build/
+
+# Gradle files
+.gradle/
+/captures/
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
 local.properties
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Keystore files (VERY IMPORTANT!)
+*.jks
+*.keystore
+
+# Google Services (if you want to manage it manually per-developer)
+# google-services.json
+
+# Proguard mapping files
+*.pro
+/proguard/
+
+# Log files
+*.log
+
+# Caching files
+.pre-dexed/
+
+# Other
+/release/
+/app/release/
